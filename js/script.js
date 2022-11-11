@@ -34,6 +34,7 @@ async function getHorrorMovie() {
     
     const horror= await response.json()
     console.log(horror);
+    renderHorrorMovie(horror)
     }catch(error){
         console.error(error);
     }
@@ -44,29 +45,150 @@ function renderHorrorMovie(allHorrorMoive){
     console.log(horror)
     const movieCover=document.querySelector('#horrormovies')
     movieCover.innerHTML+=` <div class="col-md-2">
-    <img class="movie-cover" src="./assets/media/media12.jpg">
-</div>
-<div class="col-md-2">
-    <img class="movie-cover" src="./assets/media/media13.jpg">
-</div>
-<div class="col-md-2">
-    <img class="movie-cover" src="./assets/media/media14.jpg">
-</div>
-<div class="col-md-2">
-    <img class="movie-cover" src="./assets/media/media15.jpg">
-</div>
-<div class="col-md-2">
-    <img class="movie-cover" src="./assets/media/media16.jpg">
-</div>
-<div class="col-md-2">
-    <img class="movie-cover" src="./assets/media/media17.jpg">
+    <img class="movie-cover" src="${horror.imageUrl}">
 </div>
 
 </div>`
 });
 }
 
-window.onload=async()=>{
-    const horror= await getHorrorMovie()
-    renderHorrorMovie(horror)
+
+async function getComdeyMovie() {
+    try{
+        const options1={
+            method:'Get',
+        headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzZjZWVhOWQ0YmUzZDAwMTU4NDVmZDQiLCJpYXQiOjE2NjgwODM0MjMsImV4cCI6MTY2OTI5MzAyM30.Q91c_7Uzf8wt0zNONFw6-2P0p3bt6jmWXenodNwkVLQ",
+          },
+        };
+    
+    const response = await fetch(
+      "https://striveschool-api.herokuapp.com/api/movies/comedy",options1);
+    
+    const comedy= await response.json()
+    console.log(comedy);
+    renderComedyMovie(comedy)
+    }catch(error){
+        console.error(error);
+    }
+    
 }
+function renderComedyMovie(allComdeyMoive){
+    allComdeyMoive.forEach((comedy) => {
+    console.log(comedy)
+    const movieCover=document.querySelector('#comdeymovies')
+    movieCover.innerHTML+=` <div class="col-md-2">
+    <img class="movie-cover" src="${comedy.imageUrl}">
+</div>
+</div>`
+});
+}
+
+async function getActionMovie() {
+    try{
+        const options2={
+            method:'Get',
+        headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzZjZWVhOWQ0YmUzZDAwMTU4NDVmZDQiLCJpYXQiOjE2NjgwODM0MjMsImV4cCI6MTY2OTI5MzAyM30.Q91c_7Uzf8wt0zNONFw6-2P0p3bt6jmWXenodNwkVLQ",
+          },
+        };
+    
+    const response = await fetch(
+      "https://striveschool-api.herokuapp.com/api/movies/action",options2);
+    
+    const action= await response.json()
+    console.log(action);
+    renderActionMovie(action)
+    }catch(error){
+        console.error(error);
+    }
+    
+}
+function renderActionMovie(allActionMoive){
+    allActionMoive.forEach((action) => {
+    console.log(action)
+    const movieCover=document.querySelector('#actionmovies')
+    movieCover.innerHTML+=` <div class="col-md-2">
+    <img class="movie-cover" src="${action.imageUrl}">
+</div>
+</div>`
+});
+}
+
+
+
+
+window.onload=async()=>{
+    getHorrorMovie()
+    getComdeyMovie()
+    getActionMovie()
+}
+
+    //   const params = new URLSearchParams(window.location.search);
+    //   const productId = params.get("productId");
+
+    //   window.onload = async () => {
+    //     if (productId) {
+    //       const response = await fetch(
+    //         `https://striveschool-api.herokuapp.com/api/product/${productId}`,
+    //         {
+    //           headers: {
+    //             Authorization:
+    //               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzZjZjVhYWQ0YmUzZDAwMTU4NDYwMDUiLCJpYXQiOjE2NjgwODUxNjMsImV4cCI6MTY2OTI5NDc2M30.SNaFuXft-4tKHsmsUjntSnVzwK4DNrqsFrd5gpAjyJw",
+    //           },
+    //         }
+    //       );
+    //       const product = await response.json();
+
+    //       let submitButton = document.querySelector("#submit-button");
+    //       submitButton.innerText = "Edit product";
+    //       submitButton.classList.remove("btn-primary");
+    //       submitButton.classList.add("btn-success");
+
+    //       document.querySelector("#product-name").value = product.name;
+    //       document.querySelector("#product-description").value =
+    //         product.description;
+    //       document.querySelector("#product-brand").value = product.brand;
+    //       document.querySelector("#product-imageUrl").value = product.imageUrl;
+    //       document.querySelector("#product-price").value = product.price;
+    //     }
+    //   };
+
+    //   async function onFormSubmit(event) {
+    //     event.preventDefault();
+    //     const newProduct = {
+    //       name: document.querySelector("#product-name").value,
+    //       description: document.querySelector("#product-description").value,
+    //       brand: document.querySelector("#product-brand").value,
+    //       imageUrl: document.querySelector("#product-imageUrl").value,
+    //       price: document.querySelector("#product-price").value,
+    //     };
+    //     const options = {
+    //       method: productId ? "PUT" : "POST",
+    //       body: JSON.stringify(newProduct),
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //         Authorization:
+    //           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzZjZWVhOWQ0YmUzZDAwMTU4NDVmZDQiLCJpYXQiOjE2NjgwODM0MjMsImV4cCI6MTY2OTI5MzAyM30.Q91c_7Uzf8wt0zNONFw6-2P0p3bt6jmWXenodNwkVLQ",
+    //       },
+    //     };
+    //     try {
+    //       const endpoint = productId
+    //         ? `https://striveschool-api.herokuapp.com/api/product/${productId}`
+    //         : "https://striveschool-api.herokuapp.com/api/product/";
+    //       const response = await fetch(endpoint, options);
+    //       if (response.ok) {
+    //         alert(
+    //           productId
+    //             ? "Product edited successfully!"
+    //             : "Product created successfully!"
+    //         );
+    //       } else {
+    //         throw new Error("ERROR WHILE EXECUTING THE TRY BLOCK!");
+    //       }
+    //     } catch (error) {
+    //       console.error(error);
+    //     }
+    //   }
