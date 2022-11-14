@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kaes Phone</title>
+    <title>netflix</title>
 
     <link
       rel="stylesheet"
@@ -34,7 +34,7 @@
             <a class="nav-link" href="index.html">Home</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="backoffice.html"
+            <a class="nav-link" href="backend.html"
               >Create Products <span class="sr-only">(current)</span></a
             >
           </li>
@@ -43,36 +43,40 @@
     </nav>
 
     <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-6 mt-5">
-          <h1>Add New Movies</h1>
-          <form onsubmit="onFormSubmit(event)" id="product-form">
-            <div class="form-group">
-              <label for="product-name">Moive Name</label>
-              <input type="text" class="form-control" id="product-name" />
-            </div>
-            <div class="form-group">
-              <label for="product-description">Movie Description</label>
-              <textarea
-                class="form-control"
-                id="product-description"
-              ></textarea>
-            </div>
-            <div class="form-group">
-              <label for="product-imageUrl"> Image URL</label>
-              <input type="url" class="form-control" id="product-imageUrl" />
-            </div>
-            <div class="form-group">
-              <label for="category">Category</label>
-              <input type="number" class="form-control" id="category" />
-            </div>
-            <button id="submit-button" type="submit" class="btn btn-primary">
-              Add Movie
-            </button>
-          </form>
+        <div class="row justify-content-center">
+          <div class="col-md-6 mt-5">
+            <h1>Edit Movie Section</h1>
+            <form onsubmit="onFormSubmit(event)" id="movie-form">
+              <div class="form-group">
+                <label for="movie-name">Movie Name</label>
+                <input type="text" class="form-control" id="movie-name" />
+              </div>
+              <div class="form-group">
+                <label for="movie-description">Movie Description</label>
+                <textarea class="form-control" id="movie-description"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="movie-category">Movie Category</label>
+                <input type="text" class="form-control" id="movie-category" />
+              </div>
+              <div class="form-group">
+                <label for="movie-imgUrl">Movie Image Url</label>
+                <input type="text" class="form-control" id="movie-imgUrl" />
+              </div>
+              <button id="edit-button" type="submit" class="btn btn-primary">
+                Edit Movie
+              </button>
+              <button
+                id="delete-button"
+                type="submit"
+                class="btn btn-outline-danger"
+              >
+                Delete Movie
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
 
     <script
       src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"

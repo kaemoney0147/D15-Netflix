@@ -45,7 +45,8 @@ function renderHorrorMovie(allHorrorMoive){
     console.log(horror)
     const movieCover=document.querySelector('#horrormovies')
     movieCover.innerHTML+=` <div class="col-md-2">
-    <img class="movie-cover" src="${horror.imageUrl}">
+    <a href='details.html?movieId=${horror._id}'>
+    <img class="movie-cover" src="${horror.imageUrl}"></a>
 </div>
 
 </div>`
@@ -55,7 +56,7 @@ function renderHorrorMovie(allHorrorMoive){
 
 async function getComdeyMovie() {
     try{
-        const options1={
+        const options={
             method:'Get',
         headers: {
             Authorization:
@@ -64,7 +65,7 @@ async function getComdeyMovie() {
         };
     
     const response = await fetch(
-      "https://striveschool-api.herokuapp.com/api/movies/comedy",options1);
+      "https://striveschool-api.herokuapp.com/api/movies/comedy",options);
     
     const comedy= await response.json()
     console.log(comedy);
@@ -79,7 +80,8 @@ function renderComedyMovie(allComdeyMoive){
     console.log(comedy)
     const movieCover=document.querySelector('#comdeymovies')
     movieCover.innerHTML+=` <div class="col-md-2">
-    <img class="movie-cover" src="${comedy.imageUrl}">
+    <a href='details.html?movieId=${comedy._id}'>
+    <img class="movie-cover" src="${comedy.imageUrl}"></a>
 </div>
 </div>`
 });
@@ -87,7 +89,7 @@ function renderComedyMovie(allComdeyMoive){
 
 async function getActionMovie() {
     try{
-        const options2={
+        const options={
             method:'Get',
         headers: {
             Authorization:
@@ -96,7 +98,7 @@ async function getActionMovie() {
         };
     
     const response = await fetch(
-      "https://striveschool-api.herokuapp.com/api/movies/action",options2);
+      "https://striveschool-api.herokuapp.com/api/movies/action",options);
     
     const action= await response.json()
     console.log(action);
@@ -111,7 +113,8 @@ function renderActionMovie(allActionMoive){
     console.log(action)
     const movieCover=document.querySelector('#actionmovies')
     movieCover.innerHTML+=` <div class="col-md-2">
-    <img class="movie-cover" src="${action.imageUrl}">
+    <a href='details.html?movieId=${action._id}'>
+    <img class="movie-cover" src="${action.imageUrl}"></a>
 </div>
 </div>`
 });
@@ -122,8 +125,8 @@ function renderActionMovie(allActionMoive){
 
 window.onload=async()=>{
     getHorrorMovie()
-    getComdeyMovie()
     getActionMovie()
+    getGenres()
 }
 
     //   const params = new URLSearchParams(window.location.search);
